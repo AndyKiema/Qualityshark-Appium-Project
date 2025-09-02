@@ -67,7 +67,7 @@ describe('My Login application', () => {
       await errorMessage.isDisplayed();
       await expect(unmatchingCredentialsMessage).toHaveText("Username and password do not match any user in this service.");
 
-      driver.startActivity("com.swaglabsmobileapp", "com.swaglabsmobileapp.MainActivity");
-      await driver.setTimeout({ implicit: 8000 });
+    
+    
     });
 });
