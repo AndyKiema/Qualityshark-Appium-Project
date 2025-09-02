@@ -1,0 +1,2 @@
+Find app activity and package-adb shell dumpsys window | find "mCurrentFocus"
+Do this while app is open
