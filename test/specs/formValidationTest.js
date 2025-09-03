@@ -1,10 +1,10 @@
 /// <reference types="webdriverio" />
 /// <reference types="@wdio/mocha-framework" />
 /// <reference types="@wdio/appium-service" />
-const { expect, browser, $ } = require('@wdio/globals')
+const { expect, browser, $ } = require('@wdio/globals');
 
-describe('My Login application', () => {
-    it('should login with valid credentials', async () => {
+describe('Login form validation', () => {
+    it('should validate all login scenarios', async () => {
 
       //Empty Credentials
       await driver.setTimeout({ implicit: 8000 });
