@@ -1,0 +1,84 @@
+1. CLI command to verify attached device and get device number of attached device: adb devices
+
+2. CLI command to get android version of attached device :  adb shell getprop ro.build.version.release
+
+3. CLI Command to initialize a node project: 
+
+npm init -y
+
+4. CLI command to install webdriverIO: 
+
+npm install --save-dev @wdio/cli
+
+5. CLI Command for webdriverIO configuration wizard: 
+
+npx wdio config
+
+6. CLI command to verify version of Appium installed: 
+
+appium -v
+
+7. CLI command to verify Appium driver installed: 
+
+appium driver list --installed
+
+8. CLI command to manually install UIAutomator2: 
+
+appium driver install uiautomator2
+
+9. CLI command to install latest Appium version: 
+
+npm install -g appium@latest
+
+10.  List of all required dev Dependencies in the package.json file:
+"devDependencies": {
+"@testing-library/webdriverio": "^3.2.1",
+    "@wdio/appium-service": "^9.15.0",
+    "@wdio/cli": "^9.15.0",
+    "@wdio/local-runner": "^9.15.0",
+    "@wdio/mocha-framework": "^9.15.0",
+    "@wdio/spec-reporter": "^9.15.0",
+    "appium": "^3.0.1",
+    "appium-uiautomator2-driver": "^4.2.3"
+  }
+
+11. CLI command to reinstall all dev Dependencies: 
+
+npm install
+
+12.  Desired capabilities template to replace content of wdio.conf.js (edit to match attached device):
+
+
+exports.config = {
+    runner: 'local',
+    port: 4723,
+    specs: ['./test/specs/*.js'],
+    capabilities: [{
+        platformName: 'Android',
+        'appium:platformVersion': '11.0',  // Update to android version of attached device
+        'appium:deviceName': 'R58M85YDYZR',   //Update to udid for adb device CLI command
+        'appium:appPackage': 'com.swaglabsmobileapp',     
+        'appium:appActivity': 'com.swaglabsmobileapp.MainActivity',
+        'appium:automationName': 'UiAutomator2',
+        'appium:noReset': true,
+    }],
+    services: ['appium'],
+    framework: 'mocha',
+    reporters: [['spec', { symbols: { passed: '[PASS]', failed: '[FAIL]' } }]],
+    mochaOpts: { timeout: 110000 }
+}
+13. CLI command to get app package name and app main activity: adb shell dumpsys window | findstr /R "mCurrentFocus" 
+
+14. Sample test script to replace with describe callback function of test.e2e.js file:
+
+
+describe('My Login application', () => {
+    it('should find username field', async () => {
+        const usernameInput = await $("~test-Username"); 
+        await usernameInput.clearValue();
+        await usernameInput.setValue("standard_user");
+    });
+});
+
+15. Command to run test script:
+npx wdio run wdio.conf.js
